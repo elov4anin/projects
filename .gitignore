@@ -1,0 +1,34 @@
+/.idea/
+/Operators.iml
+
+#common
+out/
+classes/
+build/
+payment/
+syntax:glob
+*.swp
+git.properties
+
+#IDEA Project Files
+*iml
+*iws
+.idea
+*ipr
+ishopdb
+*.log
+
+# Eclipse Project Files
+.settings/
+.gwt/
+.project
+.classpath
+
+# jboss wildfly
+jboss-as-7.1.1.Final
+wildfly-*
+jboss-config
+tic-libs
+
+ssl
+/node_modules/

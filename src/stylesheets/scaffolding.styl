@@ -71,3 +71,24 @@ input:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s eas
 input:focus::-moz-placeholder          {opacity: 0; transition: opacity 0.3s ease;}
 input:focus:-moz-placeholder           {opacity: 0; transition: opacity 0.3s ease;}
 input:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s ease;}
+
+
+button,
+*:-moz-focus-outer,
+*::-moz-focus-inner,
+select
+  outline none
+
+select:active, select:focus {
+  outline: none !important;
+}
+select::-moz-focus-inner {
+  border: 0 !important;
+}
+
+button:active, button:focus {
+  outline: none !important;
+}
+button::-moz-focus-inner {
+  border: 0 !important;
+}

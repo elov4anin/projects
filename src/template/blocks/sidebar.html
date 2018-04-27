@@ -4,7 +4,7 @@
         <p class="login__text">
             Логином является адрес электронной почты, который вы&nbsp;подтвердили после регистрации
         </p>
-        <form action="login.php" class="login" method="post">
+        <form class="login" method="post">
             <div class="login__input-wrap">
                 <input type="text" class="login__input" name="fullname" placeholder="Логин" >
             </div>
@@ -14,11 +14,11 @@
             <div class="login__input-wrap">
                 <input type="checkbox" name="remember" class="remember__input" id="remember">
                 <label for="remember" class="remember__label">
-                    Запомнить логин пароль для данного устройства
+                    Запомнить логин пароль<br>для данного устройства
                 </label>
             </div>
 
-            <button class="login__submit" type="submit" id="submitLogin">Войти</button>
+            <button class="login__submit" type="button" id="submitLogin" disabled>Войти</button>
 
         </form>
     </div>

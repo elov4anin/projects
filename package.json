@@ -48,6 +48,7 @@
     "gulp-tap": "^1.0.1",
     "gulp.spritesmith": "^6.9.0",
     "path": "^0.12.7",
+    "swiper": "^4.2.2",
     "yargs": "^11.0.0"
   }
 }

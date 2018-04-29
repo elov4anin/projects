@@ -3,7 +3,7 @@
     <p class="sign__header-text">
         для начала работы с&nbsp;платежной системой &laquo;Центральная касса&raquo; пройдите регистрацию
     </p>
-    <form action="sign.php" class="sign__form" method="post">
+    <form action="" class="sign__form" method="post">
         <div class="sign__input-wrap">
             <input type="text" class="sign__input" name="fullname" placeholder="Ваши Ф.И.О" >
         </div>
@@ -16,10 +16,10 @@
         <div class="sign__input-wrap">
             <input type="checkbox" name="accept" class="accept__input" id="accept">
             <label for="accept" class="accept__label">Я&nbsp;даю согласие на&nbsp;обработку моих персональных данных и&nbsp;принимаю
+                <br>
                 <a class="accept__link">условия публичной оферты</a></label>
         </div>
 
-        <button class="sign__submit" type="submit" id="submitSign">Регистрация</button>
-
+        <button class="sign__submit" type="button" id="submitSign" disabled>Регистрация</button>
     </form>
 </main>

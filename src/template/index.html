@@ -1,54 +1,9 @@
 @@include('blocks/page__header.html', {
-    "page-title": "Регистрация - Личный кабинет ЦК для бизнеса",
+    "page-title": "Личный кабинет ЦК для бизнеса",
     "page-header--inner": ""
 })
-        <main class="sign">
-            <h1 class="sign__header">Регистрация</h1>
-            <p class="sign__header-text">
-                для начала работы с&nbsp;платежной системой &laquo;Центральная касса&raquo; пройдите регистрацию
-            </p>
-            <form action="sign.php" class="sign__form" method="post">
-                <div class="sign__input-wrap">
-                    <input type="text" class="sign__input" name="fullname" placeholder="Ваши Ф.И.О" >
-                </div>
-                <div class="sign__input-wrap">
-                    <input type="tel" class="sign__input" name="tel" placeholder="Телефон">
-                </div>
-                <div class="sign__input-wrap">
-                    <input type="email" class="sign__input" name="email" placeholder="E-mail">
-                </div>
-                <div class="sign__input-wrap">
-                    <input type="checkbox" name="accept" class="accept__input" id="accept">
-                    <label for="accept" class="accept__label">Я&nbsp;даю согласие на&nbsp;обработку моих персональных данных и&nbsp;принимаю
-                        <a class="accept__link">условия публичной оферты</a></label>
-                </div>
-
-                <button class="sign__submit" type="submit" id="submitSign">Регистрация</button>
-                
-            </form>
-        </main>
-        <footer class="page__footer">
-            <span class="copy">&copy;&nbsp;&laquo;Центральная касса&raquo; 2018</span>
-            <ul class="social__list">
-                <li class="social__item">
-                    <a href="" class="social__link">
-                        <img src="" alt="Мы в ВК" class="social__logo">
-                    </a>
-                </li>
-                <li class="social__item">
-                    <a href="" class="social__link">
-                        <img src="" alt="Мы в Фейсбук" class="social__logo">
-                    </a>
-                </li>
-                <li class="social__item">
-                    <a href="" class="social__link">
-                        <img src="" alt="Мы в Телеграм" class="social__logo">
-                    </a>
-                </li>
-            </ul>
-        </footer>
-    </div>
-</div>
+@@include('blocks/slider.html')
+@@include('blocks/page__footer.html')
 @@include('blocks/sidebar.html')
 <script src="app.js"></script>
 </body>

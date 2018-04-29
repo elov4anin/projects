@@ -41,7 +41,7 @@ gulp.task('scripts', function () {
                 rules: [
                     {
                         test: /\.(js)$/,
-                        exclude: /(node_modules)/,
+                        exclude:  /node_modules\/(?!(dom7|swiper)\/).*/,
                         loader: 'babel-loader',
                         query: {
                             presets: ['env']
@@ -103,7 +103,7 @@ gulp.task("images", function () {
 /* Задача сборки из отдельных блоков верстки страниц в папку build */
 
 gulp.task("html", function () {
-    gulp.src(["src/template/**/*.html"])
+    gulp.src(["src/template/*.html"])
         .pipe(plumber())
         .pipe(fileinclude({
                 prefix: "@@",

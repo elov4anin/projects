@@ -25,3 +25,39 @@
   bottom: 10px
   top: auto
   z-index: 5
+  width: 40px
+  height: 40px
+  background-image: none
+  border-radius 50%
+  border: 2px solid #A5B1BE;
+  transition border-color 0.3s ease-in-out
+
+
+
+  &:before
+    position: absolute
+    top: 11px
+    left: 9px
+    content: '';
+    width: 11px
+    height: 11px
+    border none
+    border-bottom: 2px solid #A5B1BE;
+    border-right: 2px solid #A5B1BE;
+
+  &:hover
+    border-color #FBB601
+
+    &:before
+      border-color #FBB601
+
+.swiper-button-prev
+  &:before
+    left: 14px
+    transform rotate(135deg)
+.swiper-button-next
+  left: 60px;
+  &:before
+    transform rotate(-45deg)
+
+

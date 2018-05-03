@@ -23,6 +23,7 @@ let page = {
     body: document.getElementById("body"),
     class: "body--slide-",
     slides: document.querySelectorAll("swiper-slide"),
+    progressIndex: document.getElementById("loaderIndex"),
     clearBgSliders: function() {
         this.body.setAttribute("class", "");
 
@@ -31,6 +32,7 @@ let page = {
         console.log(activeSlide);
 
         this.body.classList.add(this.class + activeSlide);
+        this.progressIndex.innerText = activeSlide + 1;
     },
 
 };

@@ -1,9 +1,14 @@
 @@include('blocks/page__header.html', {
     "page-title": "Личный кабинет ЦК для бизнеса",
-    "page-header--inner": ""
+    "logo": "logo-header-white.png",
+    "enter": "enter",
+    "body": "body--slide-0",
+    "container": "container--slider"
 })
 @@include('blocks/slider.html')
-@@include('blocks/page__footer.html')
+@@include('blocks/page__footer.html', {
+    "footer": "page__footer--slider"
+})
 @@include('blocks/sidebar.html')
 <script src="app.js"></script>
 </body>

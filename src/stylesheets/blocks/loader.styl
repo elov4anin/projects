@@ -20,8 +20,24 @@
     border-radius: 1px;
 
   &__progress
-    width: 89px;
+    width: 0
     height: 2px;
 
     background: linear-gradient(269.03deg, #FBB601 0%, #F2994A 99.99%);
     border-radius: 1px;
+
+    &--animated
+      animation-name loader
+      animation-duration 4.9s
+      animation-timing-function linear;
+
+
+
+@keyframes loader {
+  from {
+    width 0
+  }
+  to {
+    width: 100%
+  }
+}

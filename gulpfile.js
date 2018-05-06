@@ -32,10 +32,14 @@ var buildFolder = 'build';/*Папка сборки*/
 var srcNew = "src";
 
 gulp.task('scripts', function () {
-    return gulp.src('./src/js/app.js')
+    return gulp.src('./src/js/*.js')
         .pipe(webpackStream({
+            entry: {
+                app: "./src/js/app.js",
+                sign: './src/js/sign.js'
+            },
             output: {
-                filename: 'app.js',
+                filename: "[name].js"
             },
             module: {
                 rules: [
@@ -50,10 +54,10 @@ gulp.task('scripts', function () {
                 ]
             }
         }))
-        .pipe(gulp.dest(buildFolder))
+        .pipe(gulp.dest(buildFolder + "/js"))
         .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest(buildFolder))
+        .pipe(gulp.dest(buildFolder + "/js"))
         .pipe(server.reload({stream: true}));
 });
 

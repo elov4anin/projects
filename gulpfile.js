@@ -36,7 +36,8 @@ gulp.task('scripts', function () {
         .pipe(webpackStream({
             entry: {
                 app: "./src/js/app.js",
-                sign: './src/js/sign.js'
+                sign: './src/js/sign.js',
+                message: './src/js/message.js'
             },
             output: {
                 filename: "[name].js"

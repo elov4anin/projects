@@ -1,0 +1,121 @@
+.message
+  padding-top: 50px
+  text-align: center
+  &__header
+
+    font-weight: normal;
+    line-height: normal;
+    font-size: 32px;
+    letter-spacing: -0.05em;
+
+    color: #3079FF;
+
+  &__text
+    line-height: 34px;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: -0.05em;
+
+    color: #5A6176;
+
+  &__mail
+    text-decoration: none
+    color: #3079FF;
+
+
+  &__list-header
+    font-weight: 500
+    line-height: 34px;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: -0.05em;
+
+    color: #5A6176
+  &__list
+    margin-top: 20px
+    margin: 0
+    list-style-type none
+    display: flex
+    justify-content center
+
+  &__item
+    position: relative
+    padding-left: 40px
+    line-height: normal;
+    font-size: 12px;
+    text-align: left
+    color: #5A6176;
+    width: 230px
+
+    &:nth-child(1)
+      margin-right: 25px
+
+    &:before
+      counter-increment: item
+      content counter(item)
+      position: absolute
+      left: 0px
+      top: -7px
+
+      font-weight: 900;
+      line-height: 56px;
+      font-size: 56px;
+      text-align: center;
+      letter-spacing: -0.02em;
+      color: #E1E8EC;
+
+
+
+.attention
+  padding-top: 25px
+  padding-bottom: 25px
+  width: 100%
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(205, 218, 227, 0.3) 25.98%, rgba(205, 218, 227, 0.3) 74.74%, rgba(255, 255, 255, 0) 99.69%);
+
+  &__header
+    position: relative
+    display: block
+    width: 150px
+    margin-right: auto
+    margin-left: auto
+    font-weight: normal;
+    line-height: normal;
+    font-size: 32px;
+    letter-spacing: -0.05em;
+    color: #3079FF;
+    &:before
+      position: absolute
+      top: 25px
+      left: 0
+      content ""
+      border:2px solid #3079FF;
+      border-radius 50%
+      width: 18px
+      height: 18px
+
+    &:after
+      position: absolute
+      top: 31px
+      left: 9px
+      content ""
+      border none
+      border-left:2px solid #3079FF;
+      border-bottom:2px solid #3079FF;
+
+      width: 6px
+      height: 6px
+      transform skewY(30deg)
+
+
+  &__uppertext
+    font-size: 1.5em
+    font-weight: 400
+
+  &__text
+    font-weight: normal;
+    line-height: 23px;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: -0.02em;
+
+    color: #5A6176;

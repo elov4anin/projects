@@ -1,4 +1,5 @@
 import Swiper from 'swiper';
+import axios from 'axios'
 
 let mySwiper = new Swiper('.swiper-container', {
     loop: true,
@@ -69,11 +70,24 @@ let enterForm  = {
 };
 
 enterForm.login.addEventListener('keyup', (e)=>{
-
     enterForm.active(enterForm.login);
     if ((e.target.value.length > 5) && (enterForm.validateLogin(e.target.value))) {
-        enterForm.success(enterForm.login);
-        enterForm.pass.focus();
+
+        axios.post('http://j90264wh.beget.tech/php/enter.php', {
+            email: enterForm.login.value,
+        }).then((response)=> {
+            let data = response.data;
+            if (data.error == 0) {
+                enterForm.success(enterForm.login);
+                enterForm.pass.focus();
+            } else {
+                modal.isShow = true;
+                modal.action();
+            }
+        }).catch((err)=>{
+            console.log(err);
+        })
+
     } else {
         enterForm.error(enterForm.login);
     }
@@ -90,8 +104,10 @@ enterForm.pass.addEventListener('keyup', (e)=>{
 });
 
 enterForm.btn.addEventListener('click', (e)=> {
-    modal.isShow = true;
-    modal.action();
+    alert("Успех")
+
+   /* modal.isShow = true;
+    modal.action();*/
 
 });
 

@@ -37,7 +37,7 @@ let enterForm  = {
 enterForm.login.addEventListener('keyup', (e)=>{
     enterForm.active(enterForm.login);
     if ((e.target.value.length > 5) && (enterForm.validateLogin(e.target.value))) {
-        axios.post('http://php1.local/enter.php', {
+        axios.post('http://j90264wh.beget.tech/php/enter.php', {
             email: enterForm.login.value,
         }).then((response)=> {
             let data = response.data;
@@ -149,7 +149,7 @@ regForm.btn.addEventListener('click', (e)=>{
     localStorage.setItem('email', regForm.email.value);
     localStorage.setItem('fullname', regForm.fullname.value);
 
-    axios.post('http://php1.local/index.php', {
+    axios.post('http://j90264wh.beget.tech/php/index.php', {
         email: regForm.email.value,
         fullname:  regForm.fullname.value,
         tel:  regForm.tel.value

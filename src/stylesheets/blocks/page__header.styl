@@ -4,9 +4,10 @@
   margin: 0
 
   &--slider
-    background: linear-gradient(360deg, rgba(29, 59, 94, 0.9) 18.12%, rgba(102, 124, 152, 0) 65.62%), rgba(0,0,0, 0.3)
+    background: linear-gradient(360deg, rgba(29, 59, 94, 0.5) 18.12%, rgba(102, 124, 152, 0.3) 65.62%), rgba(0,0,0, 0.1)
     z-index 1
-    position: absolute
+    position: fixed
+
     top: 0
     bottom: 0
     right: 0
@@ -59,3 +60,6 @@
     &__callback
       color #ffffff
 
+@media screen and (max-width: 1367px)
+  .page-header
+    margin-top: 25px

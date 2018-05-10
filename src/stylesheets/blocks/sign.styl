@@ -163,3 +163,40 @@
   border-bottom: 2px solid #ffffff
 
   transform rotate(45deg)
+
+
+
+
+@media screen and (max-width: 1367px)
+  .sign
+    &__header
+      margin-top: 30px
+      font-weight: 400
+      line-height: normal;
+      font-size: 30px;
+
+    &__header-text
+      width: 70%
+      margin-top: 10px
+      font-size: 20px
+      line-height: 1em
+
+    &__input
+      padding: 10px
+
+
+    &__input-wrap
+      margin-top: 15px
+      &--error
+        &:after
+          top: 8px;
+          right: 25px;
+
+      &--success
+        &:after
+          top: 3px;
+
+    &__submit
+      padding-top: 10px
+      padding-bottom: 10px
+      font-size: 24px;

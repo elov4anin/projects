@@ -53,6 +53,9 @@ gulp.task('scripts', function () {
                         }
                     }
                 ]
+            },
+            externals: {
+                jquery: 'jQuery'
             }
         }))
         .pipe(gulp.dest(buildFolder + "/js"))

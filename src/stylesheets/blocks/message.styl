@@ -1,5 +1,5 @@
 .message
-  padding-top: 50px
+  padding-top: 5px
   text-align: center
   &__header
 
@@ -67,8 +67,8 @@
 
 
 .attention
-  padding-top: 25px
-  padding-bottom: 25px
+  padding-top: 20px
+  padding-bottom: 20px
   width: 100%
   background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(205, 218, 227, 0.3) 25.98%, rgba(205, 218, 227, 0.3) 74.74%, rgba(255, 255, 255, 0) 99.69%);
 
@@ -106,7 +106,6 @@
       height: 6px
       transform skewY(30deg)
 
-
   &__uppertext
     font-size: 1.5em
     font-weight: 400
@@ -119,3 +118,39 @@
     letter-spacing: -0.02em;
 
     color: #5A6176;
+
+@media screen and (max-width: 1367px)
+
+  .message
+    padding-top:0
+
+    &__img
+      width: 128px
+      height: auto
+
+    &__header
+      margin-top: 5px
+      margin-bottom: 5px
+      font-size: 28px
+
+    &__text
+      margin-top: 10px
+      margin-bottom: 10px
+      line-height: 24px;
+      font-size: 20px
+
+  .attention
+    padding-top: 10px
+    padding-bottom: 5px
+    &__header
+      font-size: 26px;
+
+      &:before
+        top: 15px
+
+      &:after
+        top: 21px
+
+    &__text
+      margin-bottom: 5px
+      margin-top: 5px

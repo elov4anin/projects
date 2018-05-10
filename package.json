@@ -48,6 +48,8 @@
     "gulp-svgmin": "^1.2.4",
     "gulp-tap": "^1.0.1",
     "gulp.spritesmith": "^6.9.0",
+    "inputmask": "^3.3.11",
+    "jquery.maskedinput": "^1.4.1",
     "path": "^0.12.7",
     "swiper": "^4.2.2",
     "yargs": "^11.0.0"

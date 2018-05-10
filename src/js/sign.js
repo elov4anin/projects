@@ -1,3 +1,11 @@
+import Inputmask from "inputmask";
+import axios from 'axios'
+
+Inputmask({"mask": "+7(999) 999-9999", "oncomplete": ()=>{
+    regForm.success(regForm.tel);
+        regForm.email.focus();
+}}).mask('tel');
+
 /* Форма входа */
 let page = {
     body: document.getElementById("body")
@@ -29,8 +37,20 @@ let enterForm  = {
 enterForm.login.addEventListener('keyup', (e)=>{
     enterForm.active(enterForm.login);
     if ((e.target.value.length > 5) && (enterForm.validateLogin(e.target.value))) {
-        enterForm.success(enterForm.login);
-        enterForm.pass.focus();
+        axios.post('http://php1.local/enter.php', {
+            email: enterForm.login.value,
+        }).then((response)=> {
+            let data = response.data;
+            if (data.error == 0) {
+                enterForm.success(enterForm.login);
+                enterForm.pass.focus();
+            } else {
+                modal.isShow = true;
+                modal.action();
+            }
+        }).catch((err)=>{
+            console.log(err);
+        })
     } else {
         enterForm.error(enterForm.login);
     }
@@ -47,9 +67,9 @@ enterForm.pass.addEventListener('keyup', (e)=>{
 });
 
 enterForm.btn.addEventListener('click', (e)=> {
-    modal.isShow = true;
-    modal.action();
-
+    alert("Успех");
+   /* modal.isShow = true;
+    modal.action();*/
 });
 
 /* Форма регистрации*/
@@ -60,6 +80,7 @@ let regForm = {
     email: document.getElementById('email'),
     accept: document.getElementById('accept'),
     btn: document.getElementById('submitSign'),
+    isTelValid: false,
     error:  function (wrap) {
         wrap.parentNode.classList.remove('sign__input-wrap--active');
         wrap.parentNode.classList.remove('sign__input-wrap--success');
@@ -71,28 +92,28 @@ let regForm = {
         wrap.parentNode.classList.add('sign__input-wrap--success');
     },
     validateFullname(fullname) {
-        return /^[А-ЯЁ][а-яё]+(-[А-ЯЁ][а-яё]+)? [А-ЯЁ][а-яё]+( [А-ЯЁ][а-яё]+)?$/.test(fullname);
+        return /([А-ЯЁ][а-яё]+[\-\s]?){3,}/.test(fullname);
     },
     validateEmail(email) {
         return pattern.test(email);
     },
-    validateTel(tel) {
-        return /^((8|\+7)[\-]?)?(\(?\d{3}\)?[\-]?)?[\d\-]{7,10}$/.test(tel);
+    validateTel(dir) {
+        this.isTelValid(dir);
+        /*return /^((8|\+7)[\-]?)?(\(?\d{3}\)?[\-]?)?[\d\-]{7,10}$/.test(tel);*/
     }
 };
 
 regForm.fullname.addEventListener('keyup', (e)=>{
     //regForm.active(regForm.login);
-    if ((e.target.value.length > 3) && (regForm.validateFullname(e.target.value))) {
+    if (regForm.validateFullname(e.target.value)) {
         regForm.success(regForm.fullname);
-        regForm.tel.focus();
 
     } else {
         regForm.error(regForm.fullname);
     }
 });
 
-regForm.tel.addEventListener('keyup', (e)=>{
+/*regForm.tel.addEventListener('keyup', (e)=>{
     //regForm.active(regForm.login);
     if ((e.target.value.length > 5) && (regForm.validateTel(e.target.value))) {
         regForm.success(regForm.tel);
@@ -101,7 +122,7 @@ regForm.tel.addEventListener('keyup', (e)=>{
     } else {
         regForm.error(regForm.tel);
     }
-});
+});*/
 
 regForm.email.addEventListener('keyup', (e)=>{
     //regForm.active(regForm.login);
@@ -127,7 +148,23 @@ regForm.btn.addEventListener('click', (e)=>{
     e.preventDefault();
     localStorage.setItem('email', regForm.email.value);
     localStorage.setItem('fullname', regForm.fullname.value);
-    window.location.href = 'message.html';
+
+    axios.post('http://php1.local/index.php', {
+        email: regForm.email.value,
+        fullname:  regForm.fullname.value,
+        tel:  regForm.tel.value
+    }).then((response)=> {
+        let data = response.data;
+        if (data.error == 0) {
+            window.location.href = 'message.html';
+        } else {
+            console.log(data.error);
+        }
+
+    }).catch((err)=>{
+        console.log(err);
+    })
+
 
 
 

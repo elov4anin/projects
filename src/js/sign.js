@@ -6,6 +6,8 @@ Inputmask({"mask": "+7(999) 999-9999", "oncomplete": ()=>{
         regForm.email.focus();
 }}).mask('tel');
 
+Inputmask({"mask": "+7(999) 999-9999"}).mask('callbackTel');
+
 /* Форма входа */
 let page = {
     body: document.getElementById("body")
@@ -192,4 +194,39 @@ let modal = {
 modal.btn.addEventListener('click', ()=> {
     modal.isShow = false;
     modal.action();
+});
+
+let callback = {
+    callback: document.getElementById("callback"),
+    modal: document.getElementById("callbackModal"),
+    close: document.getElementById("backcallClose"),
+    btn: document.getElementById("backcallBtn"),
+    class: "backcall-window--show",
+    overlay: 'overlay',
+    isShow: false,
+    action: function () {
+        if (this.isShow) {
+            this.modal.classList.add(this.class);
+            page.body.classList.add(this.overlay);
+        } else {
+            this.modal.classList.remove(this.class);
+            page.body.classList.remove(this.overlay);
+        }
+
+    }
+};
+
+callback.callback.addEventListener('click', ()=> {
+    callback.isShow = true;
+    callback.action();
+});
+
+callback.close.addEventListener('click', ()=> {
+    callback.isShow = false;
+    callback.action();
+});
+callback.btn.addEventListener('click', (e)=> {
+    e.preventDefault();
+    callback.isShow = false;
+    callback.action();
 });

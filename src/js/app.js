@@ -1,5 +1,8 @@
 import Swiper from 'swiper';
 import axios from 'axios'
+import Inputmask from "inputmask";
+
+Inputmask({"mask": "+7(999) 999-9999"}).mask('callbackTel');
 
 let mySwiper = new Swiper('.swiper-container', {
     loop: true,
@@ -113,6 +116,7 @@ enterForm.btn.addEventListener('click', (e)=> {
 
 let modal = {
     modal: document.getElementById('modal'),
+
     btn: document.getElementById('modalBtn'),
     class: 'modal--show',
     overlay: 'overlay',
@@ -132,6 +136,44 @@ let modal = {
 
 
 };
+
+let callback = {
+    callback: document.getElementById("callback"),
+    modal: document.getElementById("callbackModal"),
+    close: document.getElementById("backcallClose"),
+    btn: document.getElementById("backcallBtn"),
+    class: "backcall-window--show",
+    overlay: 'overlay',
+    isShow: false,
+    action: function () {
+        if (this.isShow) {
+
+            mySwiper.autoplay.stop();
+            this.modal.classList.add(this.class);
+            page.body.classList.add(this.overlay);
+        } else {
+            this.modal.classList.remove(this.class);
+            page.body.classList.remove(this.overlay);
+            mySwiper.autoplay.start();
+        }
+
+    }
+};
+
+callback.callback.addEventListener('click', ()=> {
+    callback.isShow = true;
+    callback.action();
+});
+
+callback.close.addEventListener('click', ()=> {
+    callback.isShow = false;
+    callback.action();
+});
+callback.btn.addEventListener('click', (e)=> {
+    e.preventDefault();
+    callback.isShow = false;
+    callback.action();
+});
 
 modal.btn.addEventListener('click', ()=> {
     modal.isShow = false;

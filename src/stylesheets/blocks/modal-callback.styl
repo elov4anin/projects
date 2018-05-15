@@ -1,0 +1,210 @@
+.backcall {
+  position: fixed;
+  z-index: 1001;
+  bottom: 80px;
+  right: 25px;
+  background-color: #0083cc;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #202020
+  font-family Roboto, SansSerif
+}
+
+.backcall:hover {
+  background-color: #0083e2
+}
+
+.backcall:active {
+  box-shadow: inset 0 0 25px #202020
+}
+
+.backcall-window {
+  position: absolute;
+  display: none;
+  top: 10px;
+  left: 50%;
+  z-index: 1000;
+  box-sizing: border-box;
+  width: 300px;
+  min-height: 350px;
+  margin-left: -150px;
+  background-image: url(../img/Modal_Back.png);
+  background-size: cover;
+  background-position-y: 0px;
+  box-shadow: 0 0 15px #202020
+}
+
+.backcall-window--show {
+  display: block
+}
+
+.backcall-window__header {
+  text-align: center;
+  margin-bottom: 15px
+}
+
+.backcall-window__text {
+  padding: 40px 15px 20px 25px;
+  width: 90%;
+  font-size: 16px;
+  font-family Roboto, SansSerif
+  font-weight: 300;
+  line-height: 1.3em
+}
+
+.backcall-window__text-header {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.5em
+  font-weight: 500
+}
+
+.backcall-window__form,.backcall-window__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column
+}
+
+.backcall-window__form {
+  background-color: rgba(237,235,240,.9);
+  padding: 25px;
+  width: 83%;
+  min-height: 100%
+  font-family Roboto, SansSerif
+}
+
+.backcall-window__form input,.backcall-window__form textarea {
+  margin-bottom: 20px;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #fff!important
+  color: #5A6176!important
+  font-family Roboto, SansSerif
+}
+
+.backcall-window__form>input::placehoder {
+  font-family: Roboto
+  font-weight: normal;
+  line-height: 34px;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+
+  color: #92A1B0;
+}
+.backcall-window__form input:first-of-type {
+  margin-top: 20px
+}
+
+.backcall-window__form textarea {
+  min-height: 100px;
+  resize: none
+  font-family Roboto, SansSerif
+}
+
+.backcall-window__form-callme {
+  outline: none
+  border: none
+  margin-top: 15px;
+  margin-bottom: 30px;
+  border-radius: 50px;
+  font-size: 24px;
+  ffont-family Roboto, SansSerif
+  font-weight: 400;
+  text-align: center;
+  line-height: 1;
+  color: #20262c;
+  padding: 18px 25px;
+  min-height: 60px;
+  box-sizing: border-box;
+  transition: all .3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #fbb601;
+  box-shadow: 0 5px 30px 0 rgba(251,182,1,.4)
+}
+
+.backcall-window__form-callme:hover {
+  box-shadow: 0 5px 60px 0 rgba(251,182,1,.8)
+}
+
+.backcall-window__close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+  font-size: 0;
+  background-color: transparent
+  border none
+  outline none
+
+  cursor pointer
+}
+
+.backcall-window__close:after,.backcall-window__close:before {
+
+  content: " ";
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: #000;
+  border-radius: 1px;
+  left: -1px;
+  top: 13px
+}
+
+.backcall-window__close:before {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg)
+}
+
+.backcall-window__close:after {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg)
+}
+
+
+@media (min-width: 701px) {
+  .backcall-window {
+    position:fixed;
+    left: 0
+    right: 0
+    margin-right: auto
+    margin-left: auto
+    width: 700px
+  }
+
+  .backcall-window__text {
+    padding-top: 40px;
+    padding-left: 25px;
+    padding-right: 15px;
+    width: 55%;
+    font-size: 28px;
+    line-height: 1.3em
+  }
+
+  .backcall-window__wrapper {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row
+  }
+
+  .backcall-window__form {
+    width: 60%
+  }
+}
+
+@media (min-width: 955px) {
+  .backcall-window {
+    top:50%;
+
+    margin-top: -260px
+
+  }
+}

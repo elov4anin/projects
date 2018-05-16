@@ -77,7 +77,7 @@ enterForm.login.addEventListener('keyup', (e)=>{
     if ((e.target.value.length > 5) && (enterForm.validateLogin(e.target.value))) {
 
         axios.post('http://j90264wh.beget.tech/php/enter.php', {
-            email: enterForm.login.value,
+            email: enterForm.login.value
         }).then((response)=> {
             let data = response.data;
             if (data.error == 0) {
@@ -107,7 +107,27 @@ enterForm.pass.addEventListener('keyup', (e)=>{
 });
 
 enterForm.btn.addEventListener('click', (e)=> {
-    alert("Успех")
+    if ((enterForm.pass.value.length > 4) && (enterForm.validateLogin(enterForm.login.value))) {
+        axios.post('http://j90264wh.beget.tech/php/enter.php', {
+            email: enterForm.login.value,
+            pass: enterForm.pass.value
+        }).then((response)=> {
+            let data = response.data;
+            if (data.error == 0) {
+                alert("Успех");
+            } else {
+                alert("Ошибка");
+            }
+        }).catch((err)=>{
+            console.log(err);
+        })
+    } else if (!enterForm.validateLogin(enterForm.login.value)){
+        enterForm.error(enterForm.login);
+        enterForm.login.focus();
+    } else if (!enterForm.pass.value.length > 4){
+        enterForm.error(enterForm.pass);
+        enterForm.pass.focus();
+    }
 
    /* modal.isShow = true;
     modal.action();*/

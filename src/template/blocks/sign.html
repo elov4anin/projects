@@ -5,13 +5,16 @@
     </p>
     <form action="" class="sign__form" method="post">
         <div class="sign__input-wrap">
-            <input type="text" class="sign__input" name="fullname" placeholder="Ваши Фамилия Имя Отчество" id="fullname" >
+            <label for="fullname" class="sign__placeholder" id="labelFullname">Ваши Фамилия Имя Отчество</label>
+            <input type="text" class="sign__input" name="fullname" placeholder="Ваши Фамилия Имя Отчество" id="fullname" maxlength="90" >
         </div>
         <div class="sign__input-wrap">
+            <label for="tel" class="sign__placeholder" id="labelTel">Телефон</label>
             <input type="tel" class="sign__input" name="tel" placeholder="Телефон" id="tel">
         </div>
         <div class="sign__input-wrap">
-            <input type="email" class="sign__input" name="email" placeholder="E-mail" id="email">
+            <label for="email" class="sign__placeholder" id="labelEmail">primer@primer.ru</label>
+            <input type="email" class="sign__input" name="email" placeholder="E-mail" id="email" maxlength="50">
         </div>
         <div class="sign__input-wrap">
             <input type="checkbox" name="accept" class="accept__input" id="accept">

@@ -1,6 +1,6 @@
 .sign
   &__header
-    margin-top: 111px
+    margin-top: 51px
     margin-bottom: 0
 
     font-weight: 400
@@ -20,8 +20,8 @@
 
   &__input-wrap
     position: relative
-    margin-top: 30px
-    margin-bottom: 0
+    padding-top: 30px
+    margin-bottom: 5px
 
     &:nth-child(4)
       &:after
@@ -31,24 +31,48 @@
         &:after
           content ""
           position: absolute
-          top: 20px;
-          right: 15px;
+          top: 45px;
+          right: 25px;
           width: 5px;
           height: 28px;
           background-image: url(../img/icons-svg/ic_attention.svg)
           background-repeat:no-repeat
 
-
     &--success
         &:after
           content ""
           position: absolute
-          top: 15px;
+          top: 45px;
           right: 10px;
           width: 28px;
           height: 28px;
           background-image: url(../img/icons-svg/ic_success.svg)
           background-repeat:no-repeat
+
+
+  &__placeholder
+    display: none
+    position: absolute
+    top: 0
+    left: 0
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 25px;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+
+    &--focused
+      display: inline
+      color: #3079FF;
+
+    &--error
+      display: inline
+      color: #F84850;
+
+    &--success
+      display: inline
+      color: #41C566;
 
   &__input
     margin-bottom: 0
@@ -93,13 +117,6 @@
 
     &:disabled
       opacity 0.4
-
-
-
-
-
-
-
 
 .accept
   &__input
@@ -187,17 +204,18 @@
 
 
     &__input-wrap
-      margin-top: 15px
+      margin-top: 0px
       &--error
         &:after
-          top: 8px;
+          top: 38px;
           right: 25px;
 
       &--success
         &:after
-          top: 3px;
+          top: 33px;
 
     &__submit
+      margin-top: 15px;
       padding-top: 10px
       padding-bottom: 10px
       font-size: 24px;

@@ -5,10 +5,16 @@ Inputmask({
     "mask": "+7(999) 999-9999",
     "oncomplete": ()=>{
     regForm.success(regForm.tel);
+    regForm.labelTel.classList.remove('sign__placeholder--focused');
+    regForm.labelTel.classList.remove('sign__placeholder--error');
+    regForm.labelTel.classList.add('sign__placeholder--success');
     regForm.isTelValid = true;
     regForm.email.focus();
     },
     "oncleared":()=>{
+        regForm.labelTel.classList.remove('sign__placeholder--focused');
+        regForm.labelTel.classList.remove('sign__placeholder--success');
+        regForm.labelTel.classList.add('sign__placeholder--error');
         regForm.isTelValid = false;
         regForm.error(regForm.tel);
     }
@@ -106,8 +112,11 @@ enterForm.btn.addEventListener('click', (e)=> {
 
 let regForm = {
     fullname: document.getElementById('fullname'),
+    labelFullname: document.getElementById('labelFullname'),
     tel: document.getElementById('tel'),
+    labelTel: document.getElementById('labelTel'),
     email: document.getElementById('email'),
+    labelEmail: document.getElementById('labelEmail'),
     accept: document.getElementById('accept'),
     btn: document.getElementById('submitSign'),
     isTelValid: false,
@@ -124,7 +133,7 @@ let regForm = {
         wrap.parentNode.classList.add('sign__input-wrap--success');
     },
     validateFullname(fullname) {
-        return /([А-ЯЁ][а-яё]+[\-\s]?){3,}/.test(fullname);
+        return /^[А-Яа-я ]{0,50}$/.test(fullname);
     },
     validateEmail(email) {
         return pattern.test(email);
@@ -136,12 +145,21 @@ let regForm = {
 };
 
 regForm.fullname.addEventListener('keyup', (e)=>{
+    regForm.labelFullname.classList.remove('sign__placeholder--success');
+    regForm.labelFullname.classList.remove('sign__placeholder--error');
+    regForm.labelFullname.classList.add('sign__placeholder--focused');
     //regForm.active(regForm.login);
     if (regForm.validateFullname(e.target.value)) {
+        regForm.labelFullname.classList.remove('sign__placeholder--focused');
+        regForm.labelFullname.classList.remove('sign__placeholder--error');
+        regForm.labelFullname.classList.add('sign__placeholder--success');
         regForm.isFullNameValid = true;
         regForm.success(regForm.fullname);
 
-    } else {
+    } else if (e.target.value.length >10) {
+        regForm.labelFullname.classList.remove('sign__placeholder--focused');
+        regForm.labelFullname.classList.remove('sign__placeholder--success');
+        regForm.labelFullname.classList.add('sign__placeholder--error');
         regForm.isFullNameValid = false;
         regForm.error(regForm.fullname);
     }
@@ -159,13 +177,22 @@ regForm.fullname.addEventListener('keyup', (e)=>{
 });*/
 
 regForm.email.addEventListener('keyup', (e)=>{
+    regForm.labelEmail.classList.remove('sign__placeholder--success');
+    regForm.labelEmail.classList.remove('sign__placeholder--error');
+    regForm.labelEmail.classList.add('sign__placeholder--focused');
     //regForm.active(regForm.login);
     if ((e.target.value.length > 5) && (regForm.validateEmail(e.target.value))) {
+        regForm.labelEmail.classList.remove('sign__placeholder--focused');
+        regForm.labelEmail.classList.remove('sign__placeholder--error');
+        regForm.labelEmail.classList.add('sign__placeholder--success');
         regForm.success(regForm.accept);
         regForm.isEmailValid = true;
         regForm.success(regForm.email);
 
-    } else {
+    } else  if (e.target.value.length >5) {
+        regForm.labelEmail.classList.remove('sign__placeholder--focused');
+        regForm.labelEmail.classList.remove('sign__placeholder--success');
+        regForm.labelEmail.classList.add('sign__placeholder--error');
         regForm.isEmailValid = false;
         regForm.error(regForm.email);
     }
@@ -271,6 +298,7 @@ callback.close.addEventListener('click', ()=> {
     callback.isShow = false;
     callback.action();
 });
+
 callback.btn.addEventListener('click', (e)=> {
     e.preventDefault();
     callback.isShow = false;

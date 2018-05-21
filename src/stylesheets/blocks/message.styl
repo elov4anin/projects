@@ -12,7 +12,7 @@
 
   &__text
     line-height: 34px;
-    font-size: 24px;
+    font-size: 22px;
     text-align: center;
     letter-spacing: -0.05em;
 
@@ -34,21 +34,26 @@
   &__list
     margin-top: 20px
     margin: 0
+    padding-left: 0
     list-style-type none
     display: flex
     justify-content center
 
   &__item
     position: relative
-    padding-left: 40px
+    padding-left: 45px
     line-height: normal;
     font-size: 12px;
     text-align: left
     color: #5A6176;
-    width: 230px
+    width: 280px
 
     &:nth-child(1)
-      margin-right: 25px
+      margin-right: 50px
+
+      span
+        text-decoration: underline
+        color #3079FF
 
     &:before
       counter-increment: item

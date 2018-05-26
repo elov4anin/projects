@@ -1,6 +1,7 @@
 import axios from "axios/index";
-import Inputmask from "inputmask";
+import Inputmask from "inputmask";/*Библеотека для AJAX запросов*/
 
+/*Маски ввода*/
 Inputmask({"mask": "+7(999) 999-9999"}).mask('callbackTel');
 
 let messagePage= {
@@ -10,7 +11,6 @@ let messagePage= {
         this.header.innerText = 'Уважаемый, ' + text + '!';
     },
     setText: function (email, site) {
-
         this.messageText.innerHTML =
             "Вам на почту  <a href='https://"+ site +"' target='_blank' class='message__mail'>" + email + "</a> отправлено письмо<br>с кодом подтверждения";
     }
@@ -20,7 +20,7 @@ function getSiteOfMail(email) {
     return email.replace(/.*@/, "");
 
 }
-
+/*При загрузке страницы, если есть данный в хранилище браузера, то установить заголовок и текст*/
 document.addEventListener('DOMContentLoaded', function() {
     if (localStorage.getItem('fullname') !='') {
         messagePage.setHeader(localStorage.getItem('fullname'));
@@ -59,7 +59,7 @@ let enterForm  = {
         return pattern.test(email);
     }
 };
-
+/*Обработка ввода логина, с проверкой наличия его в БД ЛК*/
 enterForm.login.addEventListener('keyup', (e)=>{
     enterForm.active(enterForm.login);
     if ((e.target.value.length > 5) && (enterForm.validateLogin(e.target.value))) {
@@ -81,7 +81,7 @@ enterForm.login.addEventListener('keyup', (e)=>{
         enterForm.error(enterForm.login);
     }
 });
-
+/*Обработка ввода пароля на вход*/
 enterForm.pass.addEventListener('keyup', (e)=>{
     enterForm.active(enterForm.pass);
     if ((e.target.value.length > 4)) {
@@ -91,7 +91,7 @@ enterForm.pass.addEventListener('keyup', (e)=>{
         enterForm.error(enterForm.pass);
     }
 });
-
+/*Обработка клика на кнопке вход*/
 enterForm.btn.addEventListener('click', (e)=> {
     if ((enterForm.pass.value.length > 4) && (enterForm.validateLogin(enterForm.login.value))) {
         axios.post('http://j90264wh.beget.tech/php/enter.php', {
@@ -117,8 +117,7 @@ enterForm.btn.addEventListener('click', (e)=> {
     /* modal.isShow = true;
      modal.action();*/
 });
-
-
+/* Модалка */
 let modal = {
     modal: document.getElementById('modal'),
     btn: document.getElementById('modalBtn'),
@@ -140,7 +139,7 @@ modal.btn.addEventListener('click', ()=> {
     modal.isShow = false;
     modal.action();
 });
-
+/*Модалка обратный звонок*/
 let callback = {
     callback: document.getElementById("callback"),
     modal: document.getElementById("callbackModal"),
@@ -174,7 +173,5 @@ callback.btn.addEventListener('click', (e)=> {
     e.preventDefault();
     callback.isShow = false;
     callback.action();
+    //@todo дописать отправку данных на callback.php
 });
-
-
-

@@ -1,9 +1,10 @@
-import Swiper from 'swiper';
-import axios from 'axios'
+import Swiper from 'swiper';/*Библеотека для слайдера*/
+import axios from 'axios'/*Библеотека для AJAX запросов*/
 import Inputmask from "inputmask";
 
+/*Маски ввода*/
 Inputmask({"mask": "+7(999) 999-9999"}).mask('callbackTel');
-
+/*Инициализация слайдера*/
 let mySwiper = new Swiper('.swiper-container', {
     loop: true,
     pagination: {
@@ -17,9 +18,8 @@ let mySwiper = new Swiper('.swiper-container', {
         el: '.swiper-scrollbar',
     },
     autoplay: {
-        delay: 5000,
+        delay: 5000,/*задержка при автопроигрывании сайдера должна быть равна или около таймеру загрузки прогрессбара loaderProgressBar*/
     }
-
 });
 
 let page = {
@@ -42,14 +42,14 @@ let page = {
     }
 
 };
-
+/*при изменении слайда - менять фон и отрисовывать прогресс бар*/
 mySwiper.on('slideChange', () => {
     page.clearBgSliders();
     page.changeBgContainer(mySwiper.realIndex);
     page.drawProgressBar()
 
 });
-
+/* Форма входа */
 let enterForm  = {
     login: document.getElementById("login"),
     pass: document.getElementById('pass'),
@@ -71,7 +71,7 @@ let enterForm  = {
         return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
     }
 };
-
+/*Обработка ввода логина, с проверкой наличия его в БД ЛК*/
 enterForm.login.addEventListener('keyup', (e)=>{
     enterForm.active(enterForm.login);
     if ((e.target.value.length > 5) && (enterForm.validateLogin(e.target.value))) {
@@ -95,7 +95,7 @@ enterForm.login.addEventListener('keyup', (e)=>{
         enterForm.error(enterForm.login);
     }
 });
-
+/*Обработка ввода пароля на вход*/
 enterForm.pass.addEventListener('keyup', (e)=>{
     enterForm.active(enterForm.pass);
     if ((e.target.value.length > 4)) {
@@ -105,7 +105,7 @@ enterForm.pass.addEventListener('keyup', (e)=>{
         enterForm.error(enterForm.pass);
     }
 });
-
+/*Обработка клика на кнопке вход*/
 enterForm.btn.addEventListener('click', (e)=> {
     if ((enterForm.pass.value.length > 4) && (enterForm.validateLogin(enterForm.login.value))) {
         axios.post('http://j90264wh.beget.tech/php/enter.php', {
@@ -133,7 +133,7 @@ enterForm.btn.addEventListener('click', (e)=> {
     modal.action();*/
 
 });
-
+/* Модалка */
 let modal = {
     modal: document.getElementById('modal'),
 
@@ -151,12 +151,9 @@ let modal = {
             page.body.classList.remove(this.overlay);
             mySwiper.autoplay.start();
         }
-
     }
-
-
 };
-
+/*Модалка обратный звонок*/
 let callback = {
     callback: document.getElementById("callback"),
     modal: document.getElementById("callbackModal"),
@@ -167,7 +164,6 @@ let callback = {
     isShow: false,
     action: function () {
         if (this.isShow) {
-
             mySwiper.autoplay.stop();
             this.modal.classList.add(this.class);
             page.body.classList.add(this.overlay);
@@ -176,7 +172,6 @@ let callback = {
             page.body.classList.remove(this.overlay);
             mySwiper.autoplay.start();
         }
-
     }
 };
 

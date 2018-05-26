@@ -1,6 +1,7 @@
 import Inputmask from "inputmask";
-import axios from 'axios'
+import axios from 'axios'/*Библеотека для AJAX запросов*/
 
+/*Маски ввода*/
 Inputmask({
     "mask": "+7(999) 999-9999",
     "oncomplete": ()=>{
@@ -49,13 +50,14 @@ let enterForm  = {
         return pattern.test(email);
     }
 };
-
+/*Обработка ввода логина, с проверкой наличия его в БД ЛК*/
 enterForm.login.addEventListener('keyup', (e)=>{
     enterForm.active(enterForm.login);
     if ((e.target.value.length > 5) && (enterForm.validateLogin(e.target.value))) {
         axios.post('http://j90264wh.beget.tech/php/enter.php', {
             email: enterForm.login.value
-        }).then((response)=> {
+        }).then((response) => {
+            /*Успех*/
             let data = response.data;
             if (data.error == 0) {
                 enterForm.success(enterForm.login);
@@ -64,14 +66,15 @@ enterForm.login.addEventListener('keyup', (e)=>{
                 modal.isShow = true;
                 modal.action();
             }
-        }).catch((err)=>{
+        }).catch((err) => {
+            /*Обработка ошибок*/
             console.log(err);
-        })
+        });
     } else {
         enterForm.error(enterForm.login);
     }
 });
-
+/*Обработка ввода пароля на вход*/
 enterForm.pass.addEventListener('keyup', (e)=>{
     enterForm.active(enterForm.pass);
     if ((e.target.value.length > 4)) {
@@ -81,7 +84,7 @@ enterForm.pass.addEventListener('keyup', (e)=>{
         enterForm.error(enterForm.pass);
     }
 });
-
+/*Обработка клика на кнопке вход*/
 enterForm.btn.addEventListener('click', (e)=> {
     if ((enterForm.pass.value.length > 4) && (enterForm.validateLogin(enterForm.login.value))) {
         axios.post('http://j90264wh.beget.tech/php/enter.php', {
@@ -143,7 +146,7 @@ let regForm = {
         /*return /^((8|\+7)[\-]?)?(\(?\d{3}\)?[\-]?)?[\d\-]{7,10}$/.test(tel);*/
     }
 };
-
+/*Обработка ввода ФИО*/
 regForm.fullname.addEventListener('keyup', (e)=>{
     regForm.labelFullname.classList.remove('sign__placeholder--success');
     regForm.labelFullname.classList.remove('sign__placeholder--error');
@@ -175,7 +178,7 @@ regForm.fullname.addEventListener('keyup', (e)=>{
         regForm.error(regForm.tel);
     }
 });*/
-
+/*Обработка ввода почты*/
 regForm.email.addEventListener('keyup', (e)=>{
     regForm.labelEmail.classList.remove('sign__placeholder--success');
     regForm.labelEmail.classList.remove('sign__placeholder--error');
@@ -197,7 +200,7 @@ regForm.email.addEventListener('keyup', (e)=>{
         regForm.error(regForm.email);
     }
 });
-
+/*Обработка согласия*/
 regForm.accept.addEventListener('click', (e)=>{
     if (!e.target.checked) {
         regForm.btn.setAttribute('disabled', 'disabled');
@@ -206,7 +209,7 @@ regForm.accept.addEventListener('click', (e)=>{
         regForm.btn.removeAttribute('disabled');
     }
 });
-
+/*Обработка клике по кнопке*/
 regForm.btn.addEventListener('click', (e)=>{
     if (!regForm.isFullNameValid) {
         regForm.fullname.focus();
@@ -221,6 +224,7 @@ regForm.btn.addEventListener('click', (e)=>{
         return
     }
     e.preventDefault();
+    /*Сохранить почту и фио в локальном хранилище браузера для вывода на странице с результутатом*/
     localStorage.setItem('email', regForm.email.value);
     localStorage.setItem('fullname', regForm.fullname.value);
 
@@ -235,16 +239,10 @@ regForm.btn.addEventListener('click', (e)=>{
         } else {
             console.log(data.error);
         }
-
     }).catch((err)=>{
         console.log(err);
     })
-
-
-
-
 });
-
 
 /* Модалка */
 let modal = {
@@ -268,7 +266,7 @@ modal.btn.addEventListener('click', ()=> {
     modal.isShow = false;
     modal.action();
 });
-
+/*Модалка обратный звонок*/
 let callback = {
     callback: document.getElementById("callback"),
     modal: document.getElementById("callbackModal"),
@@ -303,4 +301,6 @@ callback.btn.addEventListener('click', (e)=> {
     e.preventDefault();
     callback.isShow = false;
     callback.action();
+
+    //@todo дописать отправку данных на callback.php
 });

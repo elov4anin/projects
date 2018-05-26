@@ -88,7 +88,7 @@ enterForm.login.addEventListener('keyup', (e)=>{
                 modal.action();
             }
         }).catch((err)=>{
-            console.log(err);
+            console.log('Нет связи с сервером', err);
         })
 
     } else {
@@ -119,7 +119,7 @@ enterForm.btn.addEventListener('click', (e)=> {
                 alert("Ошибка");
             }
         }).catch((err)=>{
-            console.log(err);
+            console.log('Нет связи с сервером', err);
         })
     } else if (!enterForm.validateLogin(enterForm.login.value)){
         enterForm.error(enterForm.login);

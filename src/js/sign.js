@@ -68,7 +68,7 @@ enterForm.login.addEventListener('keyup', (e)=>{
             }
         }).catch((err) => {
             /*Обработка ошибок*/
-            console.log(err);
+            console.log('Нет связи с сервером', err);
         });
     } else {
         enterForm.error(enterForm.login);
@@ -98,7 +98,7 @@ enterForm.btn.addEventListener('click', (e)=> {
                 alert("Ошибка");
             }
         }).catch((err)=>{
-            console.log(err);
+            console.log('Нет связи с сервером', err);
         })
     } else if (!enterForm.validateLogin(enterForm.login.value)){
         enterForm.error(enterForm.login);
@@ -240,7 +240,7 @@ regForm.btn.addEventListener('click', (e)=>{
             console.log(data.error);
         }
     }).catch((err)=>{
-        console.log(err);
+        console.log('Нет связи с сервером', err);
     })
 });
 
